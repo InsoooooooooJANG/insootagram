@@ -1,3 +1,5 @@
 .env
 generated
 prisma
+prisma.yml
+node_modules/
