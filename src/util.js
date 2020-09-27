@@ -4,30 +4,33 @@ dotenv.config({path:path.resolve(__dirname, ".env")});
 
 import { adjectives, nouns } from "./words"
 import nodemailer from "nodemailer";
-import sgTransport from "nodemailer-sendgrid-transport";
+import mgTransport from "nodemailer-mailgun-transport";
+
+const MAILGUN_API = process.env.api_key;
+const MAILGUN_DOMAIL=process.env.domain;
 
 export const generatorSecret = () =>{
 	const randomNumber = Math.floor(Math.random() * adjectives.length);	
 	return `${adjectives[randomNumber]} ${nouns[randomNumber]}`
 }
 
-export const sendMail = email=>{
+export const sendMail = (email)=>{
 	const options = {
 		auth: {
-			api_user: process.env.SENDGRD_USERNAME,
-			api_key: process.env.SENDGRID_PASSWORD
+			api_key: MAILGUN_API,
+			domain:MAILGUN_DOMAIL
 		}
 	}
-	const client = nodemailer.createTransport(sgTransport(options));
+	const client = nodemailer.createTransport(mgTransport(options));
 	return client.sendMail(email);
 }
 
 export const sendSecretMail = (address, secret)=>{
 	const email = {
-		from: "factor95@naver.com",
+		from: "oasisholics@gmail.com",
 		to:address,
 		subject : "Login Secret for Insootagram",
-		html:`Hello! Your login secret it ${secret}.<br/>Copy and paste on the app/web to login`
+		html:`Hello! Your login secret it is <strong>${secret}</strongs>.<br/>Copy and paste on the app/web to login`
 	};
 	return sendMail(email);
 }
