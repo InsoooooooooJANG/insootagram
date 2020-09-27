@@ -5,12 +5,13 @@ export default{
 	Mutation:{
 		requestSecret:async (_, args) =>{
 			const {email} = args;
-			const secret = generatorSecret();
-			console.log(secret);
+			const loginSecret = generatorSecret();
+			console.log(loginSecret);
 			try{
 				await prisma.updateUser({data:{loginSecret}, where: {email}});
 				return true;
-			}catch{
+			}catch(err){
+				console.log(err);
 				return false;
 			}
 		}

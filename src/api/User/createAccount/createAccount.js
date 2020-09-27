@@ -13,7 +13,6 @@ export default {
 					bio
 				}
 			);
-			console.log('test');
 			return user;
 		}
 	}

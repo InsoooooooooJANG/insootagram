@@ -3,3 +3,4 @@ generated
 prisma
 prisma.yml
 node_modules/
+env.js
