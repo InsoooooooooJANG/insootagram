@@ -1,6 +1,6 @@
-.env
+src/.env
 generated
 prisma
 prisma.yml
 node_modules/
-env.js
+src/env.js

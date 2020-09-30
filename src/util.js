@@ -6,8 +6,8 @@ import { adjectives, nouns } from "./words"
 import nodemailer from "nodemailer";
 import mgTransport from "nodemailer-mailgun-transport";
 
-const MAILGUN_API = process.env.api_key;
-const MAILGUN_DOMAIL=process.env.domain;
+const MAILGUN_API = process.env.API_KEY;
+const MAILGUN_DOMAIL=process.env.DOMAIN;
 
 export const generatorSecret = () =>{
 	const randomNumber = Math.floor(Math.random() * adjectives.length);	
