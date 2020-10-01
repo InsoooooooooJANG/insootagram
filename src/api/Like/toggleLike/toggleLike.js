@@ -8,8 +8,7 @@ export default{
                 isAuthenticated(request);
                 const {postId} = args;
                 const {user} = request;
-
-                const existingLike = await prisma.$exists.like({
+                const filterOptions = {
                     AND: [
                         {
                             user:
@@ -23,9 +22,11 @@ export default{
                             }
                         }
                     ]
-                });
+                };
+
+                const existingLike = await prisma.$exists.like(filterOptions);
                 if(existingLike){
-                    //TODO
+                    await prisma.deleteManyLikes(filterOptions);
                 } else{
                     await prisma.createLike(
                         {
