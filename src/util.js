@@ -6,6 +6,8 @@ import { adjectives, nouns } from "./words"
 import nodemailer from "nodemailer";
 import mgTransport from "nodemailer-mailgun-transport";
 
+import jwt from "jsonwebtoken";
+
 const MAILGUN_API = process.env.API_KEY;
 const MAILGUN_DOMAIL=process.env.DOMAIN;
 
@@ -33,4 +35,8 @@ export const sendSecretMail = (address, secret)=>{
 		html:`Hello! Your login secret it is <strong>${secret}</strongs>.<br/>Copy and paste on the app/web to login`
 	};
 	return sendMail(email);
+}
+
+export const generateToken = (id) =>{
+	return jwt.sign({id}, process.env.JWT_SECRET);
 }
