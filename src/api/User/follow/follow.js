@@ -12,7 +12,7 @@ export default {
              where: { id: user.id }, 
              data:{
                 following:{
-                    disconnect:{
+                    connect:{
                         id
                     }
                 }
