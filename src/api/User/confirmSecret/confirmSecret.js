@@ -8,7 +8,12 @@ export default{
             const user = await prisma.user({email});
 
             if(secret === user.loginSecret){
-                //JWT
+                await prisma.updateUser({
+                    where:{id: user.id},
+                    data:{
+                        loginSecret:''
+                    }
+                })
                 const token = generateToken(user.id);
                 return token;
             }else{
