@@ -1,21 +1,21 @@
-export const COMMENT_FRAGMENT= `fragment CommentParts on Comment{id text user{id username}}`
+export const COMMENT_FRAGMENT = `fragment CommentParts on Comment{id text user{id username}}`;
 
-export const USER_FRAGMENT=`
+export const USER_FRAGMENT = `
     fragment UserParts on User{
         id
+        avatar
         username
     }
-`
+`;
 
-export const FILE_FRAGMENT=`
+export const FILE_FRAGMENT = `
     fragment FileParts on File{
         id
         url
     }
-`
+`;
 
-
-export const FULL_POST_FRAGMENT=`
+export const FULL_POST_FRAGMENT = `
     fragment PostParts on Post{
         id
         caption
@@ -42,4 +42,46 @@ export const FULL_POST_FRAGMENT=`
         createdAt
         updatedAt
     }
-`
+`;
+
+export const ROOM_FRAGMENT = `
+    fragment RoomParts on Room{
+        id
+        participants{
+            id
+            username
+            avatar
+        }
+        messages{
+            id
+            text
+            to{
+                id
+                username
+                avatar
+            }
+            from {
+                id
+                username
+                avatar
+            }
+        }
+    }
+`;
+
+export const MESSAGE_FRAGMENT = `
+    fragment MessageParts on Massage{
+        id
+        text
+        to{
+            id
+            username
+            avatar
+        }
+        from {
+            id
+            user
+            avatar
+        }
+    }
+`;

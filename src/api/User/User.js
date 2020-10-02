@@ -17,6 +17,13 @@ export default{
             const {user} =request;
             const {id:parentId} = parent;
             return user.id === parentId;
-        }
+        },
+        posts:({id}, _, prisma)=> prisma.user({id}).posts(),
+        following:({id}, _, prisma)=> prisma.user({id}).following(),
+        followers:({id}, _, prisma)=> prisma.user({id}).followers(),
+        likes:({id}, _, prisma)=> prisma.user({id}).likes(),
+        comments:({id}, _, prisma)=> prisma.user({id}).comments(),
+        rooms:({id}, _, prisma)=> prisma.user({id}).rooms(),
+    
     }
 }
