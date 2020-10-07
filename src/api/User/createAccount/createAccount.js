@@ -13,7 +13,7 @@ export default {
 					bio
 				}
 			);
-			return user;
+			return true;
 		}
 	}
 };
