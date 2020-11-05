@@ -1,5 +1,9 @@
 
 
+# type Query{
+#     me:UserProfile!
+# }
+
 type Query{
-    me:UserProfile!
+    me:User!
 }

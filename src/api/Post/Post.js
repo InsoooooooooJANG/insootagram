@@ -30,17 +30,9 @@ export default {
         .aggregate()
         .count();
     },
-    files:({id}, _, {prisma})=>{
-      prisma.post({id}).files()
-    },
-    comments:({id}, _, {prisma}) => {
-      prisma.post({id}).comments()
-    },
-    user:({id}, _, {prisma}) =>{
-      prisma.post({id}).user()
-    },
-    likes:({id}, _, {prisma}) =>{
-      prisma.post({id}).likes()
-    }
+    files: ({ id }, _, { prisma }) => prisma.post({ id }).files(),
+    comments: ({ id }, _, { prisma }) => prisma.post({ id }).comments(),
+    user: ({ id }, _, { prisma }) => prisma.post({ id }).user(),
+    likes: ({ id }, _, { prisma }) => prisma.post({ id }).likes()
   },
 };
